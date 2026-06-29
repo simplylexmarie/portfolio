@@ -691,6 +691,7 @@ const prog=document.getElementById('progress'),hdr=document.getElementById('hdr'
 const horiz=document.getElementById('work'),htrack=document.getElementById('htrack');
 const paras=[...document.querySelectorAll('[data-speed]')];
 const wideMQ=matchMedia('(min-width:821px) and (hover:hover)');
+const paraMQ=matchMedia('(min-width:821px)');
 let lastY=scrollY,vel=0,ticking=false;
 function frame(){
   const y=scrollY,doc=document.documentElement;
@@ -698,7 +699,7 @@ function frame(){
   hdr.classList.toggle('scrolled',y>40);
   vel+=((y-lastY)-vel)*.3;lastY=y;
   if(marq)marq.style.transform='skewX('+Math.max(-8,Math.min(8,vel*-0.25))+'deg)';
-  if(!reduce)paras.forEach(el=>{el.style.transform='translateY('+(y*(+el.dataset.speed))+'px)'});
+  if(!reduce&&paraMQ.matches){paras.forEach(el=>{el.style.transform='translateY('+(y*(+el.dataset.speed))+'px)'})}else{paras.forEach(el=>{el.style.transform=''})}
   if(horiz&&htrack&&wideMQ.matches){
     const top=horiz.offsetTop,total=horiz.offsetHeight-window.innerHeight;
     const p=Math.min(Math.max((y-top)/(total||1),0),1);
