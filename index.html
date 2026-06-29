@@ -627,7 +627,7 @@ document.querySelectorAll('.hero h1 .word').forEach((w,wi)=>{
 })();
 
 /* rotating word */
-(function(){const words=['content.','operations.','strategy.','video.','your brand.'];let i=0;const host=document.getElementById('rot');
+(function(){const words=['content.','social media.','short-form video.','operations.','design.','websites.'];let i=0;const host=document.getElementById('rot');
   setInterval(()=>{const cur=host.querySelector('b');i=(i+1)%words.length;const next=document.createElement('b');next.textContent=words[i];host.appendChild(next);
     requestAnimationFrame(()=>{next.classList.add('on');cur.classList.remove('on')});setTimeout(()=>cur.remove(),600)},2200)})();
 
