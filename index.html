@@ -211,6 +211,20 @@ body.ready .hero h1 .c{animation:charIn .95s var(--ease) forwards;animation-dela
 .exp__role{font-family:var(--script);font-size:1.3rem;color:var(--clay)}
 .exp__when{font-size:.78rem;letter-spacing:.06em;color:var(--dim)}
 .exp p{color:var(--soft);font-size:.95rem;margin-top:.5rem;max-width:52ch}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.4rem;margin-top:1.6rem}
+.service{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:1.9rem 1.6rem 1.7rem;overflow:hidden;
+  transition:transform .4s var(--ease),box-shadow .4s,border-color .4s}
+.service:hover{transform:translateY(-8px);border-color:var(--clay);box-shadow:0 30px 54px -30px rgba(34,29,23,.5)}
+.service:after{content:attr(data-n);position:absolute;right:.5rem;bottom:-1.1rem;font-family:var(--display);font-weight:900;font-size:5.5rem;line-height:1;color:rgba(34,29,23,.05);pointer-events:none;transition:color .4s}
+.service:hover:after{color:rgba(194,96,63,.12)}
+.service__n{font-family:var(--script);font-size:1.9rem;color:var(--clay);line-height:1}
+.service h3{font-family:var(--display);font-weight:600;font-size:1.35rem;letter-spacing:-.01em;margin:.25rem 0 .6rem}
+.service p{color:var(--soft);font-size:.94rem;margin-bottom:1.1rem;position:relative;z-index:1}
+.service__tags{list-style:none;display:flex;flex-wrap:wrap;gap:.4rem;position:relative;z-index:1}
+.service__tags li{font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:var(--soft);border:1px solid var(--line);border-radius:99px;padding:.26rem .7rem;transition:.25s}
+.service:hover .service__tags li{border-color:var(--clay);color:var(--ink)}
 .tools{margin-top:1.6rem;display:flex;flex-wrap:wrap;gap:.5rem}
 .tools span{font-size:.8rem;border:1px solid var(--ink);border-radius:99px;padding:.32rem .8rem;transition:.25s}
 .tools span:hover{background:var(--ink);color:var(--bg)}
@@ -341,7 +355,7 @@ footer .hand{font-family:var(--script);font-size:1.2rem;color:var(--clay)}
 <header class="hdr" id="hdr">
   <a href="#top" class="hdr__logo">Alexia</a>
   <nav class="hdr__nav">
-    <a href="#about">About</a><a href="#stats">Socials</a><a href="#work">Work</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
+    <a href="#about">About</a><a href="#stats">Socials</a><a href="#work">Work</a><a href="#skills">Skills</a><a href="#services">Services</a>
     <a href="#contact" class="pill-link">Let's talk</a>
   </nav>
 </header>
@@ -519,13 +533,46 @@ footer .hand{font-family:var(--script);font-size:1.2rem;color:var(--clay)}
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <p class="eyebrow rv">experience</p>
-    <div class="block rv" style="margin-top:1rem">
-      <article class="exp"><div class="exp__h"><h3>AEA Institute</h3><span class="exp__when">Since 2024</span></div><p class="exp__role">Project &amp; Operations Support</p><p>Operations &amp; coordination for school-based mental performance programs, covering reporting, scheduling, and live event production.</p></article>
-      <article class="exp"><div class="exp__h"><h3>No More Desire</h3><span class="exp__when">Since 2024</span></div><p class="exp__role">Content Pipeline Owner · Podcast</p><p>End-to-end content production for an active podcast brand, from recordings to published, platform-ready content.</p></article>
-      <article class="exp"><div class="exp__h"><h3>WGU</h3><span class="exp__when">2026</span></div><p class="exp__role">BS, Marketing</p><p>Finishing a Bachelor of Science in Marketing at Western Governors University.</p></article>
+  <!-- SERVICES -->
+  <section id="services">
+    <p class="eyebrow rv">how I can help</p>
+    <div class="services">
+      <div class="service rv" data-n="01">
+        <span class="service__n">01</span>
+        <h3>Content Production &amp; Repurposing</h3>
+        <p>Raw recordings and scattered ideas turned into polished blogs, clips, and platform-ready posts.</p>
+        <ul class="service__tags"><li>Podcasts</li><li>Blogs</li><li>Repurposing</li></ul>
+      </div>
+      <div class="service rv" data-n="02">
+        <span class="service__n">02</span>
+        <h3>Short-Form Video Editing</h3>
+        <p>Reels, TikToks, and B-roll edited around the hooks and moments that earn the scroll.</p>
+        <ul class="service__tags"><li>Reels</li><li>Editing</li><li>B-roll</li></ul>
+      </div>
+      <div class="service rv" data-n="03">
+        <span class="service__n">03</span>
+        <h3>Social Media Management</h3>
+        <p>Content calendars, scheduling, and community engagement that keep your brand consistent and growing.</p>
+        <ul class="service__tags"><li>Calendars</li><li>Scheduling</li><li>Growth</li></ul>
+      </div>
+      <div class="service rv" data-n="04">
+        <span class="service__n">04</span>
+        <h3>Operations &amp; Project Coordination</h3>
+        <p>Workflows, reporting, scheduling, and inbox/admin that keep programs and teams running smoothly.</p>
+        <ul class="service__tags"><li>Workflows</li><li>Reporting</li><li>Admin</li></ul>
+      </div>
+      <div class="service rv" data-n="05">
+        <span class="service__n">05</span>
+        <h3>Design Support</h3>
+        <p>On-brand graphics, thumbnails, eBooks, and templates designed in Canva &amp; Figma.</p>
+        <ul class="service__tags"><li>Canva</li><li>Figma</li><li>Graphics</li></ul>
+      </div>
+      <div class="service rv" data-n="06">
+        <span class="service__n">06</span>
+        <h3>Copy &amp; Newsletter Editing</h3>
+        <p>Dense, long-form content edited for clarity, readability, and a consistent brand voice.</p>
+        <ul class="service__tags"><li>Editing</li><li>SEO</li><li>Brand voice</li></ul>
+      </div>
     </div>
   </section>
 
