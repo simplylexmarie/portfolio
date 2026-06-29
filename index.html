@@ -665,9 +665,11 @@ document.querySelectorAll('.hero h1 .word').forEach((w,wi)=>{
 })();
 
 /* rotating word */
-(function(){const words=['content.','social media.','short-form video.','operations.','design.','websites.'];let i=0;const host=document.getElementById('rot');
-  setInterval(()=>{const cur=host.querySelector('b');i=(i+1)%words.length;const next=document.createElement('b');next.textContent=words[i];host.appendChild(next);
-    requestAnimationFrame(()=>{next.classList.add('on');cur.classList.remove('on')});setTimeout(()=>cur.remove(),600)},2200)})();
+(function(){const words=['content.','social media.','short-form video.','operations.','design.','websites.'];let i=0;
+  const host=document.getElementById('rot');const el=host&&host.querySelector('b');if(!el)return;
+  setInterval(()=>{el.classList.remove('on');
+    setTimeout(()=>{i=(i+1)%words.length;el.textContent=words[i];el.classList.add('on')},520);
+  },2600)})();
 
 /* reveal + count-up */
 const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');
