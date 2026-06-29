@@ -230,7 +230,45 @@ body.ready .hero h1 .c{animation:charIn .95s var(--ease) forwards;animation-dela
 .skillhead.in .underline path{stroke-dashoffset:0}
 .skillcols{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.5rem,3vw,2.6rem);margin-bottom:2.8rem}
 @media(max-width:760px){.skillcols{grid-template-columns:1fr}}
-.skillcol h3{font-family:var(--display);font-weight:600;font-size:1.15rem;margin-bottom:.9rem;padding-bottom:.6rem;border-bottom:1px solid var(--line)}
+.skillcol{position:relative;padding-top:.4rem}
+.skillcol__top{display:flex;align-items:center;gap:.7rem;margin-bottom:.3rem}
+.skillcol__n{font-family:var(--script);font-size:2rem;color:var(--clay);line-height:1}
+.skillcol__ic{width:26px;height:26px;color:var(--clay);flex:0 0 auto}
+.skillcol h3{font-family:var(--display);font-weight:600;font-size:1.2rem;margin:0 0 .9rem;padding-bottom:.6rem;position:relative;display:inline-block}
+.skillcol h3:after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--clay);transition:width .9s var(--ease) .15s}
+.skillcol.in h3:after{width:100%}
+/* shared pill cascade */
+.skillcol .tags li{opacity:0;transform:translateY(12px);transition:opacity .5s var(--ease),transform .55s var(--ease),background .25s,color .25s}
+.skillcol.in .tags li{opacity:1;transform:none}
+.skillcol.in .tags li:nth-child(1){transition-delay:.15s}.skillcol.in .tags li:nth-child(2){transition-delay:.22s}
+.skillcol.in .tags li:nth-child(3){transition-delay:.29s}.skillcol.in .tags li:nth-child(4){transition-delay:.36s}
+.skillcol.in .tags li:nth-child(5){transition-delay:.43s}.skillcol.in .tags li:nth-child(6){transition-delay:.5s}
+.skillcol.in .tags li:nth-child(7){transition-delay:.57s}.skillcol.in .tags li:nth-child(8){transition-delay:.64s}
+/* 01 Content & Media — play icon pulses, pills rise (default) */
+.skillcol--content .skillcol__ic{animation:pulseic 2s ease-in-out infinite}
+@keyframes pulseic{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.18);opacity:1}}
+/* 02 Operations & Admin — checklist: each pill checks off, slides from left */
+.skillcol--ops .tags li{transform:translateX(-12px)}
+.skillcol--ops.in .tags li{transform:none}
+.skillcol--ops .tags li:before{content:"✓";display:inline-block;margin-right:.35rem;font-weight:700;transform:scale(0);transition:transform .4s var(--ease) .2s}
+.skillcol--ops.in .tags li:before{transform:scale(1)}
+/* 03 Design Support — pills pop with scale+rotate, star icon spins */
+.skillcol--design .tags li{transform:scale(.55) rotate(-6deg)}
+.skillcol--design.in .tags li{transform:scale(1) rotate(0)}
+.skillcol--design .skillcol__ic{animation:spin 7s linear infinite}
+/* creative tag collage */
+.skillcol .tags{gap:.6rem}
+.skillcol .tags li{cursor:none;position:relative;will-change:transform;
+  font-family:var(--display);font-style:italic;font-weight:400;font-size:.92rem;letter-spacing:.01em;
+  padding:.39rem .97rem;border-radius:999px;border:1.5px solid transparent;background:var(--ink);color:var(--bg)}
+/* cycle fills for a hand-curated, magazine feel */
+.skillcol .tags li:nth-child(4n+1){background:transparent;color:var(--ink);border-color:var(--ink)}
+.skillcol .tags li:nth-child(4n+2){background:var(--clay);color:#fff}
+.skillcol .tags li:nth-child(4n+3){background:var(--paper);color:var(--ink);border-color:var(--line)}
+/* size + shape variation for rhythm */
+.skillcol .tags li:nth-child(3n+2){font-size:1.07rem}
+.skillcol .tags li:nth-child(7n+4){border-radius:13px}
+.skillcol .tags li:hover{background:var(--clay);color:#fff;border-color:var(--clay);box-shadow:0 12px 24px -10px rgba(194,96,63,.6);z-index:3}
 .toolgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem;margin-top:1.2rem}
 @media(max-width:480px){.toolgrid{grid-template-columns:repeat(2,1fr)}}
 .tool{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.85rem;text-align:center;
@@ -430,24 +468,36 @@ footer .hand{font-family:var(--script);font-size:1.2rem;color:var(--clay)}
   <!-- SKILLS -->
   <section class="skills2" id="skills">
     <div class="skillhead rv"><span class="s1">Skills <span class="star">✦</span> &amp;</span><span class="s2">Expertise</span><svg class="underline" viewBox="0 0 460 28" fill="none" aria-hidden="true"><path d="M12 18 C 130 4, 330 4, 448 14"/></svg></div>
-    <div class="rv">
+    <div>
       <div class="skillcols">
-        <div class="skillcol">
+        <div class="skillcol skillcol--content rv">
+          <div class="skillcol__top">
+            <span class="skillcol__n">01</span>
+            <svg class="skillcol__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M10 8.5l5.5 3.5L10 15.5z" fill="currentColor"/></svg>
+          </div>
           <h3>Content &amp; Media</h3>
           <ul class="tags"><li>Blog writing</li><li>Podcast repurposing</li><li>Short-form video</li><li>B-roll</li><li>Reels</li><li>Social media</li><li>SEO</li><li>WordPress</li></ul>
         </div>
-        <div class="skillcol">
+        <div class="skillcol skillcol--ops rv">
+          <div class="skillcol__top">
+            <span class="skillcol__n">02</span>
+            <svg class="skillcol__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
           <h3>Operations &amp; Admin</h3>
           <ul class="tags"><li>Project coordination</li><li>Content calendars</li><li>Workflow systems</li><li>Scheduling</li><li>Client comms</li><li>Reporting</li><li>Inbox mgmt</li></ul>
         </div>
-        <div class="skillcol">
+        <div class="skillcol skillcol--design rv">
+          <div class="skillcol__top">
+            <span class="skillcol__n">03</span>
+            <svg class="skillcol__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.5l2.4 6.1 6.1 2.4-6.1 2.4L12 19.5l-2.4-6.1L3.5 11l6.1-2.4z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          </div>
           <h3>Design Support</h3>
           <ul class="tags"><li>Social graphics</li><li>Thumbnails</li><li>eBooks</li><li>Branded templates</li><li>Presentations</li></ul>
         </div>
       </div>
 
-      <p class="eyebrow">tools I use</p>
-      <div class="toolgrid">
+      <p class="eyebrow rv">tools I use</p>
+      <div class="toolgrid rv">
         <div class="tool"><img src="logos/canva.svg" alt="Canva" loading="lazy"><span>Canva</span></div>
         <div class="tool"><img src="logos/adobe.svg" alt="Adobe" loading="lazy"><span>Adobe</span></div>
         <div class="tool"><img src="logos/figma.svg" alt="Figma" loading="lazy"><span>Figma</span></div>
@@ -573,6 +623,15 @@ addEventListener('resize',()=>requestAnimationFrame(frame));requestAnimationFram
     links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')===cur))}
   addEventListener('scroll',set,{passive:true});set();
 })();
+
+/* magnetic skill pills */
+const finePill=matchMedia('(hover:hover) and (pointer:fine)').matches;
+if(finePill){document.querySelectorAll('.skillcol .tags li').forEach(li=>{
+  li.addEventListener('mouseenter',()=>{li.style.transition='transform .12s ease, background .25s, color .25s, box-shadow .25s'});
+  li.addEventListener('mousemove',e=>{const r=li.getBoundingClientRect();
+    li.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.3}px, ${(e.clientY-r.top-r.height/2)*.5}px) scale(1.14) rotate(${(e.clientX-r.left-r.width/2)*.04}deg)`});
+  li.addEventListener('mouseleave',()=>{li.style.transition='';li.style.transform=''});
+})}
 
 /* 3D tilt */
 const fineTilt=matchMedia('(hover:hover) and (pointer:fine)').matches;
