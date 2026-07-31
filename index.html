@@ -202,6 +202,9 @@ body.ready .hero h1 .c{animation:charIn .95s var(--ease) forwards;animation-dela
 .hcard--site .hcard__media img{object-position:top}
 .hcard__visit{color:var(--clay);font-size:.86rem;font-weight:500;margin-top:.5rem;display:inline-block;transition:transform .25s var(--ease)}
 .hcard--site:hover .hcard__visit{transform:translateX(4px)}
+.hcard__more{color:var(--clay);font-size:.84rem;font-weight:500;margin-top:.5rem;display:inline-block;transition:transform .25s var(--ease)}
+.hcard:hover .hcard__more{transform:translateX(4px)}
+.proj__meta{font-size:.85rem;color:var(--dim);margin:-.4rem 0 1.1rem}
 @media(max-width:820px){.htrack{scroll-snap-type:x proximity}}
 
 /* skills + experience */
@@ -472,6 +475,22 @@ footer .hand{font-family:var(--script);font-size:1.2rem;color:var(--clay)}
           <div class="hcard__media"><img src="shots/webdesign.png" alt="Alexia Web Design website" loading="lazy"></div>
           <div class="hcard__b"><p class="hcard__t">Website · Web Design</p><h3>Alexia Web Design</h3><p>A service site for my custom website-design work — warm, effortless, hand-built.</p><span class="hcard__visit">Visit site ↗</span></div>
         </a>
+        <button class="hcard" data-card>
+          <div class="hcard__media"><img src="shots/clique.png" alt="Clique welcome screen" loading="lazy"></div>
+          <div class="hcard__b"><p class="hcard__t">Brand Identity · Figma &amp; Canva</p><h3>Clique</h3><p>Brand identity &amp; welcome screen for a friendship app.</p><span class="hcard__more">Click to learn more →</span></div>
+          <template>
+            <div class="proj__media"><img src="shots/clique.png" alt="Clique welcome screen"></div>
+            <div class="proj__text">
+              <p class="proj__type">brand identity</p>
+              <h3>Clique — Brand Identity &amp; Welcome Screen</h3>
+              <p class="proj__meta">Designed in Figma and Canva · App currently in development</p>
+              <p>Clique is a friendship app, and the name is a play on words I helped develop: when you connect with someone, you "click," and when enough people click, you've built a clique. The brand needed to make that double meaning visible at a glance.</p>
+              <p>So I leaned into a late-90s, early-2000s computer aesthetic. The welcome screen is a full keyboard of chunky retro keys, and the logo itself is a key being pressed by a hand cursor: you literally click "Clique" to start building yours. The nostalgic design does double duty. It makes the wordplay land instantly, and it sets a playful, familiar tone for an app asking people to do something that feels vulnerable: put themselves out there to make new friends.</p>
+              <p>That insight came from real data. See the 550-response study that shaped Clique, which you can view on the next slide.</p>
+              <ul class="tags"><li>Figma</li><li>Canva</li><li>Brand identity</li><li>UX</li></ul>
+            </div>
+          </template>
+        </button>
         <button class="hcard" data-card>
           <div class="hcard__media"><span class="ph">graphics<br>coming soon ✦</span></div>
           <div class="hcard__b"><p class="hcard__t">Design</p><h3>Graphic Design</h3><p>Social graphics, thumbnails &amp; templates.</p></div>
