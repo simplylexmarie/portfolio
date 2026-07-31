@@ -205,6 +205,13 @@ body.ready .hero h1 .c{animation:charIn .95s var(--ease) forwards;animation-dela
 .hcard__more{color:var(--clay);font-size:.84rem;font-weight:500;margin-top:.5rem;display:inline-block;transition:transform .25s var(--ease)}
 .hcard:hover .hcard__more{transform:translateX(4px)}
 .proj__meta{font-size:.85rem;color:var(--dim);margin:-.4rem 0 1.1rem}
+.study-cover{flex-direction:column;gap:.3rem;text-align:center;padding:1.5rem;background:linear-gradient(150deg,#e7d9c0,#d9c2a0,#eadcc2)}
+.study-cover__tag{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--clay)}
+.study-cover__n{font-family:var(--display);font-weight:600;font-size:clamp(3rem,8vw,4.6rem);line-height:1;color:var(--ink)}
+.study-cover__l{font-family:var(--script);font-size:1.5rem;color:var(--clay)}
+.proj__findings{list-style:none;display:grid;gap:.55rem;margin:0 0 1.1rem;padding:0}
+.proj__findings li{position:relative;padding-left:1.3rem;color:var(--soft);font-size:.92rem;line-height:1.5}
+.proj__findings li:before{content:"✦";position:absolute;left:0;top:.15rem;color:var(--clay);font-size:.78rem}
 @media(max-width:820px){.htrack{scroll-snap-type:x proximity}}
 
 /* skills + experience */
@@ -488,6 +495,30 @@ footer .hand{font-family:var(--script);font-size:1.2rem;color:var(--clay)}
               <p>So I leaned into a late-90s, early-2000s computer aesthetic. The welcome screen is a full keyboard of chunky retro keys, and the logo itself is a key being pressed by a hand cursor: you literally click "Clique" to start building yours. The nostalgic design does double duty. It makes the wordplay land instantly, and it sets a playful, familiar tone for an app asking people to do something that feels vulnerable: put themselves out there to make new friends.</p>
               <p>That insight came from real data. See the 550-response study that shaped Clique, which you can view on the next slide.</p>
               <ul class="tags"><li>Figma</li><li>Canva</li><li>Brand identity</li><li>UX</li></ul>
+            </div>
+          </template>
+        </button>
+        <button class="hcard" data-card>
+          <div class="hcard__media study-cover"><span class="study-cover__tag">Case Study</span><strong class="study-cover__n">550+</strong><span class="study-cover__l">survey responses</span></div>
+          <div class="hcard__b"><p class="hcard__t">User Research · Survey</p><h3>Validation Study</h3><p>A 550-response study that proved demand for Clique.</p><span class="hcard__more">Read the case study →</span></div>
+          <template>
+            <div class="proj__media study-cover"><span class="study-cover__tag">Case Study</span><strong class="study-cover__n">550+</strong><span class="study-cover__l">survey responses</span></div>
+            <div class="proj__text">
+              <p class="proj__type">user research</p>
+              <h3>Clique — User Validation Survey</h3>
+              <p class="proj__meta">Research design, distribution &amp; analysis · App currently in development</p>
+              <p>Before Clique had a brand, it needed proof that women actually wanted it. I designed and ran a validation survey for the founders, and it drew 550+ responses from the exact audience the app is built for.</p>
+              <p>The findings gave the team real data to build on:</p>
+              <ul class="proj__findings">
+                <li>99% of respondents said they would use or consider a women's friend-making app, with 54% saying "yes, definitely"</li>
+                <li>78% said making new friends in person is difficult, and 61% of women who moved cities after 18 found it hard to start over</li>
+                <li>54% said they avoid Bumble BFF because it is attached to a dating app, confirming that a standalone friendship app was the right positioning</li>
+                <li>89% of respondents fell between ages 23 and 32, sharpening the target demographic for design and marketing decisions</li>
+                <li>Feature-level questions, like shared profiles with a friend and a local community hub for events and deals, showed the team which ideas to prioritize and which to rethink</li>
+              </ul>
+              <p>One survey, three outcomes: a validated market, a confirmed positioning against the biggest competitor, and a feature roadmap grounded in audience data instead of assumptions.</p>
+              <p><em>See the brand identity this research shaped →</em></p>
+              <ul class="tags"><li>Survey design</li><li>Analysis</li><li>Positioning</li><li>Strategy</li></ul>
             </div>
           </template>
         </button>
