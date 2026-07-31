@@ -204,6 +204,11 @@ body.ready .hero h1 .c{animation:charIn .95s var(--ease) forwards;animation-dela
 .hcard--site:hover .hcard__visit{transform:translateX(4px)}
 .hcard__more{color:var(--clay);font-size:.84rem;font-weight:500;margin-top:.5rem;display:inline-block;transition:transform .25s var(--ease)}
 .hcard:hover .hcard__more{transform:translateX(4px)}
+.hcard--square{flex:0 0 min(360px,84vw)}
+.hcard--square .hcard__media{aspect-ratio:1/1;background:var(--paper)}
+.hcard--square .hcard__media img{object-fit:cover}
+.proj__hero{width:100%;max-height:460px;background:var(--cream);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.proj__hero img{max-width:100%;max-height:460px;object-fit:contain;display:block}
 .proj__meta{font-size:.85rem;color:var(--dim);margin:-.4rem 0 1.1rem}
 .study-cover{flex-direction:column;gap:.3rem;text-align:center;padding:1.5rem;background:linear-gradient(150deg,#e7d9c0,#d9c2a0,#eadcc2)}
 .study-cover__tag{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--clay)}
@@ -534,11 +539,20 @@ a.reeltile:hover .reeltile__play{background:var(--clay)}
             </div>
           </template>
         </button>
-        <button class="hcard" data-card>
-          <div class="hcard__media"><span class="ph">graphics<br>coming soon ✦</span></div>
-          <div class="hcard__b"><p class="hcard__t">Design</p><h3>Graphic Design</h3><p>Social graphics, thumbnails &amp; templates.</p></div>
-          <template><div class="proj__media"><span class="ph">graphics coming soon ✦</span></div>
-            <div class="proj__text"><p class="proj__type">in the works</p><h3>Graphic Design</h3><p>Social graphics, thumbnails, eBooks, templates will live here.</p></div></template>
+        <button class="hcard hcard--square" data-card>
+          <div class="hcard__media"><img src="shots/nmd-popup.png" alt="No More Desire community pop-up" loading="lazy"></div>
+          <div class="hcard__b"><p class="hcard__t">Conversion Design · Figma</p><h3>NMD Community Pop-Up</h3><p>A website pop-up designed to turn visitors into members.</p><span class="hcard__more">Click to learn more →</span></div>
+          <template>
+            <div class="proj__hero"><img src="shots/nmd-popup.png" alt="No More Desire community launch pop-up"></div>
+            <div class="proj__text">
+              <p class="proj__type">conversion design</p>
+              <h3>No More Desire — Community Launch Pop-Up</h3>
+              <p class="proj__meta">Conversion design for the brand's website · Designed in Figma</p>
+              <p>When No More Desire launched its free Brotherhood community, it needed a website pop-up that could turn visitors into members. In a recovery niche, that is a delicate ask: the design has to invite without pressuring, and feel hopeful instead of clinical.</p>
+              <p>I built the pop-up around warm, sunrise-lit photography and an aspirational tone, then structured it for conversion: headline first, a one-line promise, the brand's three pillars (Brotherhood, Healing, Real Recovery) as a quick trust row, a value stack making the $97 Four Pillars course free with membership, and a single high-contrast Join Free button. Every element points to one action, and the closing line anchors the brand voice: real men, real struggles, real recovery.</p>
+              <ul class="tags"><li>Figma</li><li>Conversion design</li><li>Brand voice</li></ul>
+            </div>
+          </template>
         </button>
         <button class="hcard" data-card>
           <div class="hcard__media"><span class="hcard__play">▶</span></div>
