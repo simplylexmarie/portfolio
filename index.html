@@ -172,13 +172,19 @@ body.ready .hero h1 .c{animation:charIn .95s var(--ease) forwards;animation-dela
 .stats__links a{font-size:.85rem;border:1px solid var(--ink);border-radius:99px;padding:.55rem 1.2rem;transition:.25s}
 .stats__links a:hover{background:var(--ink);color:var(--bg)}
 
-/* ===== pinned horizontal work ===== */
-.horiz{height:360vh;position:relative;z-index:2}
-.hpin{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+/* ===== horizontal work strip (native scroll) ===== */
+.horiz{position:relative;z-index:2;padding:clamp(4.5rem,10vw,8rem) 0}
+.hpin{}
 .hpin__head{padding:0 clamp(1.2rem,6vw,7rem);margin-bottom:1.8rem;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem}
 .hpin__head h2{font-family:var(--display);font-weight:500;font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.02em}
 .hpin__head .hint{color:var(--soft);font-size:.85rem;letter-spacing:.04em}
-.htrack{display:flex;gap:1.6rem;padding:0 clamp(1.2rem,6vw,7rem);will-change:transform}
+.htrack{display:flex;gap:1.6rem;padding:.3rem clamp(1.2rem,6vw,7rem) 1.4rem;overflow-x:auto;scroll-snap-type:x mandatory;cursor:grab;
+  scrollbar-width:thin;scrollbar-color:var(--clay) transparent}
+.htrack.dragging{cursor:grabbing;scroll-snap-type:none}
+.htrack::-webkit-scrollbar{height:8px}
+.htrack::-webkit-scrollbar-thumb{background:var(--clay);border-radius:99px}
+.htrack::-webkit-scrollbar-track{background:transparent}
+.hcard{scroll-snap-align:start}
 .hcard{cursor:none;flex:0 0 min(340px,78vw);background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;text-align:left;
   transition:border-color .4s,box-shadow .4s}
 .hcard:hover{border-color:var(--clay);box-shadow:0 30px 56px -30px rgba(34,29,23,.45)}
@@ -196,8 +202,7 @@ body.ready .hero h1 .c{animation:charIn .95s var(--ease) forwards;animation-dela
 .hcard--site .hcard__media img{object-position:top}
 .hcard__visit{color:var(--clay);font-size:.86rem;font-weight:500;margin-top:.5rem;display:inline-block;transition:transform .25s var(--ease)}
 .hcard--site:hover .hcard__visit{transform:translateX(4px)}
-@media(max-width:820px){.horiz{height:auto}.hpin{position:static;height:auto;display:block;overflow:visible;padding:clamp(4rem,10vw,7rem) 0}
-  .htrack{overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:1rem}.hcard{scroll-snap-align:start}}
+@media(max-width:820px){.htrack{scroll-snap-type:x proximity}}
 
 /* skills + experience */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem)}
@@ -456,7 +461,7 @@ footer .hand{font-family:var(--script);font-size:1.2rem;color:var(--clay)}
     <div class="hpin">
       <div class="hpin__head">
         <div><p class="eyebrow">selected work</p><h2>Websites &amp; content →</h2></div>
-        <p class="hint">scroll · pieces slide by · click to open</p>
+        <p class="hint">drag or swipe to explore →</p>
       </div>
       <div class="htrack" id="htrack">
         <a class="hcard hcard--site" href="https://simplylexmarie.com/" target="_blank" rel="noopener">
@@ -702,16 +707,21 @@ function frame(){
   vel+=((y-lastY)-vel)*.3;lastY=y;
   if(marq)marq.style.transform='skewX('+Math.max(-8,Math.min(8,vel*-0.25))+'deg)';
   if(!reduce&&paraMQ.matches){paras.forEach(el=>{el.style.transform='translateY('+(y*(+el.dataset.speed))+'px)'})}else{paras.forEach(el=>{el.style.transform=''})}
-  if(horiz&&htrack&&wideMQ.matches){
-    const top=horiz.offsetTop,total=horiz.offsetHeight-window.innerHeight;
-    const p=Math.min(Math.max((y-top)/(total||1),0),1);
-    const max=Math.max(htrack.scrollWidth-window.innerWidth+ (window.innerWidth*0.06),0);
-    htrack.style.transform='translateX('+(-p*max)+'px)';
-  }else if(htrack){htrack.style.transform=''}
   ticking=false;
 }
 addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(frame)}},{passive:true});
 addEventListener('resize',()=>requestAnimationFrame(frame));requestAnimationFrame(frame);
+
+/* drag-to-scroll the work strip + wheel converts to horizontal */
+if(htrack){
+  let down=false,startX=0,startL=0,moved=0;
+  htrack.addEventListener('mousedown',e=>{down=true;moved=0;startX=e.pageX;startL=htrack.scrollLeft;htrack.classList.add('dragging')});
+  addEventListener('mouseup',()=>{down=false;htrack.classList.remove('dragging')});
+  htrack.addEventListener('mouseleave',()=>{down=false;htrack.classList.remove('dragging')});
+  htrack.addEventListener('mousemove',e=>{if(!down)return;const dx=e.pageX-startX;moved+=Math.abs(dx);htrack.scrollLeft=startL-dx});
+  htrack.addEventListener('click',e=>{if(moved>6){e.preventDefault();e.stopPropagation()}},true);
+  htrack.addEventListener('wheel',e=>{if(Math.abs(e.deltaX)<Math.abs(e.deltaY)){htrack.scrollLeft+=e.deltaY;e.preventDefault()}},{passive:false});
+}
 
 /* active nav */
 (function(){
