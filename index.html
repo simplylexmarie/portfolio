@@ -225,6 +225,19 @@ body.ready .hero h1 .c{animation:charIn .95s var(--ease) forwards;animation-dela
 .sc__big{display:block;font-family:var(--display);font-weight:600;font-size:clamp(2.8rem,8vw,4rem);line-height:.9;color:#fff}
 .sc__big em{color:var(--clay);font-style:normal}
 .sc__sub{display:block;font-family:var(--script);font-size:1.5rem;color:var(--sand);margin-top:.15rem}
+/* writing cover + blog gallery */
+.wc{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:.3rem;padding:1.5rem;background:linear-gradient(160deg,#efe4d1,#e2d0b4)}
+.wc__ey{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--clay)}
+.wc__big{font-family:var(--display);font-weight:600;font-size:clamp(2.8rem,8vw,4rem);line-height:.9;color:var(--ink);margin-top:auto}
+.wc__sub{font-family:var(--script);font-size:1.5rem;color:var(--clay)}
+.bloggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem;margin-top:1.3rem}
+.blogitem{display:flex;flex-direction:column;gap:1rem;min-height:180px;text-decoration:none;border:1px solid var(--line);border-radius:14px;
+  padding:1.2rem;background:linear-gradient(155deg,#f7f0e4,#efe4d1);transition:transform .3s var(--ease),border-color .3s,box-shadow .3s}
+.blogitem:nth-child(even){background:linear-gradient(155deg,#efe7d9,#e7d9c1)}
+.blogitem:hover{transform:translateY(-5px);border-color:var(--clay);box-shadow:0 20px 40px -24px rgba(34,29,23,.5)}
+.blogitem__k{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--clay)}
+.blogitem h4{font-family:var(--display);font-weight:600;font-size:1.02rem;line-height:1.22;color:var(--ink);margin-top:.2rem}
+.blogitem__read{margin-top:auto;font-size:.8rem;color:var(--clay);font-weight:500}
 .proj__findings{list-style:none;display:grid;gap:.55rem;margin:0 0 1.1rem;padding:0}
 .proj__findings li{position:relative;padding-left:1.3rem;color:var(--soft);font-size:.92rem;line-height:1.5}
 .proj__findings li:before{content:"✦";position:absolute;left:0;top:.15rem;color:var(--clay);font-size:.78rem}
@@ -562,6 +575,26 @@ a.reeltile:hover .reeltile__play{background:var(--clay)}
               <p>When No More Desire launched its free Brotherhood community, it needed a website pop-up that could turn visitors into members. In a recovery niche, that is a delicate ask: the design has to invite without pressuring, and feel hopeful instead of clinical.</p>
               <p>I built the pop-up around warm, sunrise-lit photography and an aspirational tone, then structured it for conversion: headline first, a one-line promise, the brand's three pillars (Brotherhood, Healing, Real Recovery) as a quick trust row, a value stack making the $97 Four Pillars course free with membership, and a single high-contrast Join Free button. Every element points to one action, and the closing line anchors the brand voice: real men, real struggles, real recovery.</p>
               <ul class="tags"><li>Figma</li><li>Conversion design</li><li>Brand voice</li></ul>
+            </div>
+          </template>
+        </button>
+        <button class="hcard" data-card>
+          <div class="hcard__media wc"><span class="wc__ey">Ghostwriting</span><span class="wc__big">6</span><span class="wc__sub">long-form articles</span></div>
+          <div class="hcard__b"><p class="hcard__t">Writing · Ghostwriting</p><h3>Blog Writing</h3><p>Long-form articles written in the host's voice.</p><span class="hcard__more">See the articles →</span></div>
+          <template>
+            <div class="proj__text">
+              <p class="proj__type">ghostwriting</p>
+              <h3>Blog Writing in the Host's Voice</h3>
+              <p class="proj__meta">Long-form articles written for the No More Desire podcast</p>
+              <p>I ghostwrite long-form blog articles in the host's voice, turning each podcast episode into an SEO-informed, on-brand read. Click any to read it live on the No More Desire site.</p>
+              <div class="bloggrid">
+                <a class="blogitem" href="https://www.nomoredesire.com/post/adhd-dopamine-porn-addiction-recovery" target="_blank" rel="noopener"><span class="blogitem__k">No More Desire · Blog</span><h4>ADHD, Dopamine &amp; Porn Addiction: Working With Your Brain</h4><span class="blogitem__read">Read ↗</span></a>
+                <a class="blogitem" href="https://www.nomoredesire.com/post/why-men-struggle-to-love-connect-and-feel-their-emotions" target="_blank" rel="noopener"><span class="blogitem__k">No More Desire · Blog</span><h4>Why So Many Men Struggle to Love, Connect &amp; Feel</h4><span class="blogitem__read">Read ↗</span></a>
+                <a class="blogitem" href="https://www.nomoredesire.com/post/porn-addiction-trauma-shame-emotional-pain" target="_blank" rel="noopener"><span class="blogitem__k">No More Desire · Blog</span><h4>Porn Addiction, Trauma, Shame &amp; Emotional Pain</h4><span class="blogitem__read">Read ↗</span></a>
+                <a class="blogitem" href="https://www.nomoredesire.com/post/heat-cold-breath-stop-porn-cravings" target="_blank" rel="noopener"><span class="blogitem__k">No More Desire · Blog</span><h4>Heat, Cold &amp; Breath: Tools to Stop Cravings</h4><span class="blogitem__read">Read ↗</span></a>
+                <a class="blogitem" href="https://www.nomoredesire.com/post/porn-addiction-recovery-with-grace" target="_blank" rel="noopener"><span class="blogitem__k">No More Desire · Blog</span><h4>Porn Addiction Recovery With Grace</h4><span class="blogitem__read">Read ↗</span></a>
+                <a class="blogitem" href="https://www.nomoredesire.com/post/sexual-scripts-you-didnt-choose-porn-addiction" target="_blank" rel="noopener"><span class="blogitem__k">No More Desire · Blog</span><h4>The Sexual Scripts You Didn't Choose</h4><span class="blogitem__read">Read ↗</span></a>
+              </div>
             </div>
           </template>
         </button>
