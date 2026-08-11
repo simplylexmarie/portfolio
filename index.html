@@ -254,6 +254,17 @@ body.ready .hero h1 .c{animation:charIn .95s var(--ease) forwards;animation-dela
 .blogitem__k{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--clay)}
 .blogitem h4{font-family:var(--display);font-weight:600;font-size:1.02rem;line-height:1.22;color:var(--ink);margin-top:.2rem}
 .blogitem__read{margin-top:auto;font-size:.8rem;color:var(--clay);font-weight:500}
+/* carousel viewer */
+.carousel{max-width:400px;margin:1.5rem auto 0}
+.carousel__frame{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 20px 44px -26px rgba(34,29,23,.5)}
+.carousel__track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.carousel__track::-webkit-scrollbar{display:none}
+.carousel__track img{flex:0 0 100%;scroll-snap-align:center;width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.carousel__nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:none;
+  background:rgba(34,29,23,.55);color:#fff;font-size:1.5rem;line-height:1;cursor:none;display:flex;align-items:center;justify-content:center;z-index:2;transition:background .25s}
+.carousel__nav:hover{background:var(--clay)}
+.carousel__prev{left:10px}.carousel__next{right:10px}
+.carousel__count{text-align:center;margin-top:.8rem;font-size:.78rem;letter-spacing:.14em;color:var(--soft)}
 .proj__findings{list-style:none;display:grid;gap:.55rem;margin:0 0 1.1rem;padding:0}
 .proj__findings li{position:relative;padding-left:1.3rem;color:var(--soft);font-size:.92rem;line-height:1.5}
 .proj__findings li:before{content:"✦";position:absolute;left:0;top:.15rem;color:var(--clay);font-size:.78rem}
@@ -595,6 +606,36 @@ a.reeltile:hover .reeltile__play{background:var(--clay)}
           </template>
         </button>
         <button class="hcard" data-card>
+          <div class="hcard__media"><img src="carousel/slide1.jpg" alt="Instagram carousel" loading="lazy"></div>
+          <div class="hcard__b"><p class="hcard__t">Social · Carousel</p><h3>Instagram Carousel</h3><p>An 8-slide healing &amp; mental-health set.</p><span class="hcard__more">Swipe through it →</span></div>
+          <template>
+            <div class="proj__text">
+              <p class="proj__type">social design</p>
+              <h3>Instagram Carousel Design</h3>
+              <p class="proj__meta">8-slide educational carousel for a mental-health brand</p>
+              <p>An educational carousel on healing and trauma, designed end to end: concept, copy layout, and a calm, editorial visual system with hand-drawn botanicals and a warm, grounding palette. Swipe through all eight slides.</p>
+              <div class="carousel">
+                <div class="carousel__frame">
+                  <button class="carousel__nav carousel__prev" aria-label="Previous">‹</button>
+                  <div class="carousel__track">
+                    <img src="carousel/slide1.jpg" alt="Slide 1" loading="lazy">
+                    <img src="carousel/slide2.jpg" alt="Slide 2" loading="lazy">
+                    <img src="carousel/slide3.jpg" alt="Slide 3" loading="lazy">
+                    <img src="carousel/slide4.jpg" alt="Slide 4" loading="lazy">
+                    <img src="carousel/slide5.jpg" alt="Slide 5" loading="lazy">
+                    <img src="carousel/slide6.jpg" alt="Slide 6" loading="lazy">
+                    <img src="carousel/slide7.jpg" alt="Slide 7" loading="lazy">
+                    <img src="carousel/slide8.jpg" alt="Slide 8" loading="lazy">
+                  </div>
+                  <button class="carousel__nav carousel__next" aria-label="Next">›</button>
+                </div>
+                <div class="carousel__count"></div>
+              </div>
+              <ul class="tags"><li>Carousel design</li><li>Layout</li><li>Brand system</li></ul>
+            </div>
+          </template>
+        </button>
+        <button class="hcard" data-card>
           <div class="hcard__media"><img src="shots/reels-cover.jpg" alt="Reels preview" loading="lazy"><span class="hcard__play">▶</span></div>
           <div class="hcard__b"><p class="hcard__t">Short-Form Video · Reels</p><h3>Reels</h3><p>A selection of short-form videos I've edited.</p><span class="hcard__more">See the reels →</span></div>
           <template>
@@ -907,8 +948,15 @@ if(fine){let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
 
 /* modal */
 (function(){const modal=document.getElementById('modal'),inner=modal.querySelector('.modal__inner');
+  function setupCarousel(root){const c=root.querySelector('.carousel');if(!c)return;
+    const track=c.querySelector('.carousel__track'),count=c.querySelector('.carousel__count'),n=track.children.length;
+    const upd=()=>{if(count)count.textContent=(Math.round(track.scrollLeft/track.clientWidth)+1)+' / '+n};
+    c.querySelector('.carousel__prev').addEventListener('click',()=>track.scrollBy({left:-track.clientWidth,behavior:'smooth'}));
+    c.querySelector('.carousel__next').addEventListener('click',()=>track.scrollBy({left:track.clientWidth,behavior:'smooth'}));
+    track.addEventListener('scroll',upd,{passive:true});upd();}
   function open(btn){const t=btn.querySelector('template');if(!t)return;inner.innerHTML=t.innerHTML;
     inner.classList.toggle('modal__inner--text',!inner.querySelector('.proj__media'));
+    setupCarousel(inner);
     modal.classList.add('open');document.body.style.overflow='hidden'}
   function close(){modal.classList.remove('open');document.body.style.overflow='';inner.innerHTML=''}
   document.querySelectorAll('[data-card]').forEach(c=>c.addEventListener('click',()=>open(c)));
