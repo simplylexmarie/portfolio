@@ -265,6 +265,8 @@ body.ready .hero h1 .c{animation:charIn .95s var(--ease) forwards;animation-dela
 .carousel__nav:hover{background:var(--clay)}
 .carousel__prev{left:10px}.carousel__next{right:10px}
 .carousel__count{text-align:center;margin-top:.8rem;font-size:.78rem;letter-spacing:.14em;color:var(--soft)}
+.proj__reel{max-width:400px;margin:1.6rem auto 0;border-radius:14px;overflow:hidden;box-shadow:0 20px 44px -26px rgba(34,29,23,.5)}
+.proj__reel video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;background:#000}
 .proj__findings{list-style:none;display:grid;gap:.55rem;margin:0 0 1.1rem;padding:0}
 .proj__findings li{position:relative;padding-left:1.3rem;color:var(--soft);font-size:.92rem;line-height:1.5}
 .proj__findings li:before{content:"✦";position:absolute;left:0;top:.15rem;color:var(--clay);font-size:.78rem}
@@ -572,7 +574,8 @@ a.reeltile:hover .reeltile__play{background:var(--clay)}
                 </div>
                 <div class="carousel__count"></div>
               </div>
-              <ul class="tags"><li>Art direction</li><li>Carousel design</li><li>Copy layout</li></ul>
+              <div class="proj__reel"><video src="thewell/aliveness.mp4" controls playsinline preload="metadata"></video></div>
+              <ul class="tags"><li>Art direction</li><li>Carousel design</li><li>Copy layout</li><li>Reel editing</li></ul>
             </div>
           </template>
         </button>
