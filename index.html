@@ -267,6 +267,8 @@ body.ready .hero h1 .c{animation:charIn .95s var(--ease) forwards;animation-dela
 .carousel__count{text-align:center;margin-top:.8rem;font-size:.78rem;letter-spacing:.14em;color:var(--soft)}
 .proj__reel{max-width:400px;margin:1.6rem auto 0;border-radius:14px;overflow:hidden;box-shadow:0 20px 44px -26px rgba(34,29,23,.5)}
 .proj__reel video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;background:#000}
+.carousel--app .carousel__track img{object-fit:contain;background:var(--cream)}
+.hcard--app .hcard__media img{object-position:top}
 .proj__findings{list-style:none;display:grid;gap:.55rem;margin:0 0 1.1rem;padding:0}
 .proj__findings li{position:relative;padding-left:1.3rem;color:var(--soft);font-size:.92rem;line-height:1.5}
 .proj__findings li:before{content:"✦";position:absolute;left:0;top:.15rem;color:var(--clay);font-size:.78rem}
@@ -586,6 +588,32 @@ a.reeltile:hover .reeltile__play{background:var(--clay)}
               </div>
               <div class="proj__reel"><video src="thewell/aliveness.mp4" controls playsinline preload="metadata"></video></div>
               <ul class="tags"><li>Art direction</li><li>Carousel design</li><li>Copy layout</li><li>Reel editing</li></ul>
+            </div>
+          </template>
+        </button>
+        <button class="hcard hcard--app" data-card>
+          <div class="hcard__media"><img src="app/home.jpg" alt="Ribbiting app" loading="lazy"></div>
+          <div class="hcard__b"><p class="hcard__t">Product · UX/UI</p><h3>App Design</h3><p>UX/UI for a vocabulary app in development.</p><span class="hcard__more">See the screens →</span></div>
+          <template>
+            <div class="proj__text">
+              <p class="proj__type">ux / ui design</p>
+              <h3>Ribbiting · Vocabulary App</h3>
+              <p class="proj__meta">Product UX/UI · in development</p>
+              <p>End-to-end UX/UI for Ribbiting, a vocabulary-building app in development. A calm pond world where words are learned across lily pads, and the learner's own tadpole grows into a frog as they progress, turning daily practice and spaced review into a gentle, game-like ritual. Swipe through a few core screens.</p>
+              <div class="carousel carousel--app">
+                <div class="carousel__frame">
+                  <button class="carousel__nav carousel__prev" aria-label="Previous">‹</button>
+                  <div class="carousel__track">
+                    <img src="app/home.jpg" alt="Home screen" loading="lazy">
+                    <img src="app/learn.jpg" alt="Learn path" loading="lazy">
+                    <img src="app/learn2.jpg" alt="Lesson progress" loading="lazy">
+                    <img src="app/profile.jpg" alt="Profile" loading="lazy">
+                  </div>
+                  <button class="carousel__nav carousel__next" aria-label="Next">›</button>
+                </div>
+                <div class="carousel__count"></div>
+              </div>
+              <ul class="tags"><li>Product design</li><li>UX/UI</li><li>Gamification</li></ul>
             </div>
           </template>
         </button>
